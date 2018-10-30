@@ -1,0 +1,39 @@
+{
+  "name": "175work",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "cross-env NODE_ENV=dev supervisor ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "webpack": "^4.21.0",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-hot-middleware": "^2.24.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "chokidar": "^1.7.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "connect-multiparty": "^2.2.0",
+    "cross-env": "^3.2.4",
+    "css-loader": "^0.26.4",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.10.1",
+    "gulp-nodemon": "^2.2.1",
+    "mysql": "^2.16.0",
+    "node-sass": "^4.7.2",
+    "npm-install-webpack-plugin": "^4.0.5",
+    "reload": "^1.1.7",
+    "resolve-url-loader": "^2.2.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.13.2",
+    "url-loader": "^0.5.9"
+  }
+}
