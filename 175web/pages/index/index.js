@@ -20,9 +20,9 @@ Page({
     // testGetApi('http://172.16.1.28:3000/users',{},(res)=>{
     //   console.log(res)
     // });
-    testPostApi('http://172.16.1.28:3000/test/addUser', {name:'huhuihua',age:18,id:3}, (res) => {
-      console.log(res)
-    })
+    // testPostApi('http://172.16.1.28:3000/test/addUser', {name:'huhuihua',age:18,id:3}, (res) => {
+    //   console.log(res)
+    // })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

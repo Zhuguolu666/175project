@@ -1,0 +1,185 @@
+<view class="insert-form">
+  <view class="insert-form-title">基本信息</view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text><text class="insert-form-item-must">*</text>客户类型：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <view class="form-item-placeholder">
+        <view class="sellorcollect"><image src="{{ selectedUrl}}"></image><text>成人</text></view>
+        <view class="sellorcollect"><image src="{{ unSelectedUrl }}"></image><text>小孩</text></view>
+      </view>
+    </view>
+  </view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text><text class="insert-form-item-must">*</text>姓名：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入客户姓名'></input>
+    </view>
+  </view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>昵称：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入客户昵称'></input>
+    </view>
+  </view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text><text class="insert-form-item-must">*</text>年龄：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入客户年龄'></input>
+    </view>
+  </view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text><text class="insert-form-item-must">*</text>生日：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请选择客户生日'></input>
+    </view>
+  </view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text><text class="insert-form-item-must">*</text>民族：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入选择客户民族'></input>
+    </view>
+  </view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text><text class="insert-form-item-must">*</text>联系电话：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入联系电话'></input>
+    </view>
+  </view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>紧急联系人：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入紧急联系人'></input>
+    </view>
+  </view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>联系人电话：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入紧急联系方式'></input>
+    </view>
+  </view>
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>住址：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入客户住址'></input>
+    </view>
+  </view>
+
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>年级：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入客户年级'></input>
+    </view>
+  </view>
+
+  <view class="insert-form-title">上课信息</view>
+  
+  <view class="insert-form-item"> 
+    <view class="insert-form-item-name">
+      <text>是否报课：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <view class="form-item-placeholder">
+        <view class="sellorcollect"><image src="{{ selectedUrl}}"></image><text>是</text></view>
+        <view class="sellorcollect"><image src="{{ unSelectedUrl }}"></image><text>否</text></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>报名日期：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入报名日期'></input>
+    </view>
+  </view>
+
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>课程性质：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <view class="form-item-placeholder">
+        <view class="sellorcollect"><image src="{{ selectedUrl}}"></image><text>体验</text></view>
+        <view class="sellorcollect"><image src="{{ unSelectedUrl }}"></image><text>活动</text></view>
+        <view class="sellorcollect"><image src="{{ unSelectedUrl }}"></image><text>正课</text></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>课程名称：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入课程名称'></input>
+    </view>
+  </view>
+
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>课程数量：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入课程数量'></input>
+    </view>
+  </view>
+
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>剩余客数：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入剩余课程数量'></input>
+    </view>
+  </view>
+
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>课程费用：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入课程费用'></input>
+    </view>
+  </view>
+
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>课时长度：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入课时长度'></input>
+    </view>
+  </view>
+
+  <view class="insert-form-item">
+    <view class="insert-form-item-name">
+      <text>上课时间：</text>
+    </view>
+    <view class="insert-form-item-input">
+      <input placeholder='请输入客户年级'></input>
+    </view>
+  </view>
+</view>

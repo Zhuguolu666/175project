@@ -1,6 +1,6 @@
 var UserSQL = {  
-    insert:'INSERT INTO Person(name,age,id) VALUES(?,?,?)', 
-    queryAll:'SELECT * FROM Person',  
-    getUserById:'SELECT * FROM Person WHERE uid = ? ',
+    insert:'INSERT INTO user(name,age,id) VALUES(?,?,?)', 
+    queryAll:'SELECT * FROM user',  
+    getUserById:'SELECT * FROM user WHERE uid = ? ',
   };
 module.exports = UserSQL;
