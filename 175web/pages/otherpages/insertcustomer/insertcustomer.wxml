@@ -6,8 +6,8 @@
     </view>
     <view class="insert-form-item-input">
       <view class="form-item-placeholder">
-        <view class="sellorcollect"><image src="{{ selectedUrl}}"></image><text>成人</text></view>
-        <view class="sellorcollect"><image src="{{ unSelectedUrl }}"></image><text>小孩</text></view>
+        <view class="sellorcollect"><image data-item="customer" data-type="0" bindtap='changeCustomer' src="{{ form.customerType == 0 ? selectedUrl : unSelectedUrl }}"></image><text>成人</text></view>
+        <view class="sellorcollect"><image data-item="customer" data-type="1" bindtap='changeCustomer' src="{{ form.customerType == 1 ? selectedUrl : unSelectedUrl }}"></image><text>小孩</text></view>
       </view>
     </view>
   </view>
@@ -19,7 +19,7 @@
       <input placeholder='请输入客户姓名'></input>
     </view>
   </view>
-  <view class="insert-form-item">
+  <view class="insert-form-item" wx:if="{{form.customerType == 1}}">
     <view class="insert-form-item-name">
       <text>昵称：</text>
     </view>
@@ -39,16 +39,16 @@
     <view class="insert-form-item-name">
       <text><text class="insert-form-item-must">*</text>生日：</text>
     </view>
-    <view class="insert-form-item-input">
-      <input placeholder='请选择客户生日'></input>
+    <view class="insert-form-item-input" data-item="birth" bindtap='selectDate'>
+      <text class="insert-form-text" style="color:{{form.birthday ? '#333' : '#666'}}">{{form.birthday || '请选择客户生日'}}</text><image class="insert-form-arrow" src='../../../assets/images/details.png'></image>   
     </view>
   </view>
   <view class="insert-form-item">
     <view class="insert-form-item-name">
       <text><text class="insert-form-item-must">*</text>民族：</text>
     </view>
-    <view class="insert-form-item-input">
-      <input placeholder='请输入选择客户民族'></input>
+    <view class="insert-form-item-input" bindtap='getNation'>
+      <text class="insert-form-text" style="color:{{form.nation ? '#333' : '#666'}}">{{form.nation || '请选择客户民族'}}</text><image class="insert-form-arrow" src='../../../assets/images/details.png'></image>
     </view>
   </view>
   <view class="insert-form-item">
@@ -84,7 +84,7 @@
     </view>
   </view>
 
-  <view class="insert-form-item">
+  <view class="insert-form-item" wx:if="{{form.customerType == 1}}">
     <view class="insert-form-item-name">
       <text>年级：</text>
     </view>
@@ -101,8 +101,8 @@
     </view>
     <view class="insert-form-item-input">
       <view class="form-item-placeholder">
-        <view class="sellorcollect"><image src="{{ selectedUrl}}"></image><text>是</text></view>
-        <view class="sellorcollect"><image src="{{ unSelectedUrl }}"></image><text>否</text></view>
+        <view class="sellorcollect"><image data-item="course" data-type="Y" bindtap='changeCustomer' src="{{ form.applyStatus == 'Y' ? selectedUrl : unSelectedUrl }}"></image><text>是</text></view>
+        <view class="sellorcollect"><image data-item="course" data-type="N" bindtap='changeCustomer' src="{{ form.applyStatus == 'N' ? selectedUrl : unSelectedUrl }}"></image><text>否</text></view>
       </view>
     </view>
   </view>
@@ -111,8 +111,8 @@
     <view class="insert-form-item-name">
       <text>报名日期：</text>
     </view>
-    <view class="insert-form-item-input">
-      <input placeholder='请输入报名日期'></input>
+    <view class="insert-form-item-input" data-item="apply" bindtap='selectDate'>
+      <text class="insert-form-text" style="color:{{form.applyDate ? '#333' : '#666'}}">{{form.applyDate || '请选择报名日期'}}</text><image class="insert-form-arrow" src='../../../assets/images/details.png'></image>
     </view>
   </view>
 
@@ -122,9 +122,13 @@
     </view>
     <view class="insert-form-item-input">
       <view class="form-item-placeholder">
-        <view class="sellorcollect"><image src="{{ selectedUrl}}"></image><text>体验</text></view>
-        <view class="sellorcollect"><image src="{{ unSelectedUrl }}"></image><text>活动</text></view>
-        <view class="sellorcollect"><image src="{{ unSelectedUrl }}"></image><text>正课</text></view>
+
+        <view class="sellorcollect"><image data-item="property" data-type="0" bindtap='changeCustomer' src="{{ form.courseProperty == 0 ? selectedUrl : unSelectedUrl }}"></image><text>体验</text></view>
+
+        <view class="sellorcollect"><image data-item="property" data-type="1" bindtap='changeCustomer' src="{{ form.courseProperty == 1 ? selectedUrl : unSelectedUrl }}"></image><text>活动</text></view>
+
+        <view class="sellorcollect"><image data-item="property" data-type="2" bindtap='changeCustomer' src="{{ form.courseProperty == 2 ? selectedUrl : unSelectedUrl }}"></image><text>正课</text></view>
+        
       </view>
     </view>
   </view>
@@ -149,7 +153,7 @@
 
   <view class="insert-form-item">
     <view class="insert-form-item-name">
-      <text>剩余客数：</text>
+      <text>剩余课数：</text>
     </view>
     <view class="insert-form-item-input">
       <input placeholder='请输入剩余课程数量'></input>
@@ -179,7 +183,35 @@
       <text>上课时间：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入客户年级'></input>
+      <input placeholder='请输入上课时间'></input>
     </view>
   </view>
+
+  <view class="insert-form-submit">
+    提交
+  </view>
+  <view animation="{{animationData}}" class="animation-view">
+    <calendar 
+      class="calendar"
+      binddayClick="chooseDate"
+      calendar-style="calendar"  
+      header-style="calendar-header"  
+      board-style="calendar-board" 
+      days-color="{{dayStyle}}" 
+      weeks-type="cn"
+    />
+  </view>
+    
 </view>
+<view class="calendar-bg" style="display:{{showBg?'block':'none'}}" bindtap='closeCalendar'></view>
+<view animation="{{ animationNation }}" class="animation-nation">
+  <nation id="nation"  
+  wx:if="{{ showNation }}" 
+  bind:onCoverShow="_onCoverShow"
+  bind:onCoverHide="_onCoverHide"
+  >
+  </nation>
+</view>
+
+
+

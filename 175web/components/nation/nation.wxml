@@ -1,0 +1,6 @@
+<!--components/nation/nation.wxml-->
+<view class="nation-container">
+  <view wx:for="{{nationList}}" wx:key="item.id" class="nation-item">
+    <text>{{item.name}}</text>
+  </view>
+</view>

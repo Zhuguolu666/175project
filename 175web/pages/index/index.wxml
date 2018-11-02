@@ -1,13 +1,44 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="index-container">
+  <view class="index-banner">
+    <swiper autoplay="true" interval="{{5000}}" duration="{{1000}}" class="index-banner-box">
+      <block wx:for="{{imgUrls}}" wx:key="{{imgUrls}}">
+        <swiper-item>
+          <image class="banner-img" src="{{item}}"/>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="index-type">
+    <view class="index-type-item" bindtap='toInsertPage'>
+      <image src='../../assets/images/sigin.png'></image>
+      <text>签到打卡</text>
+    </view>
+
+    <view class="index-type-item" bindtap='toInsertPage'>
+      <image src='../../assets/images/book.png'></image>
+      <text>课程预约</text>
+    </view>
+
+    <view class="index-type-item" bindtap='toInsertPage'>
+      <image src='../../assets/images/teacher.png'></image>
+      <text>教师风采</text>
+    </view>
+
+    <view class="index-type-item" bindtap='toInsertPage'>
+      <image src='../../assets/images/about.png'></image>
+      <text>关于我们</text>
+    </view>
+
+    <view class="index-type-item" data-type="write" bindtap='toInsertPage'>
+      <image data-type="write" src='../../assets/images/write.png'></image>
+      <text data-type="write">信息录入</text>
+    </view>
+
+    <view class="index-type-item" bindtap='toInsertPage'>
+      <image src='../../assets/images/list.png'></image>
+      <text>客户列表</text>
+    </view>
   </view>
 </view>

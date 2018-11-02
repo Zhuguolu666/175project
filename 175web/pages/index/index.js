@@ -5,10 +5,10 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    imgUrls:[
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    ]
   },
   //事件处理函数
   bindViewTap: function() {
@@ -57,5 +57,18 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  toInsertPage(e){
+    if (e.target.dataset.type === "write"){
+      wx.navigateTo({
+        url: '../otherpages/insertcustomer/insertcustomer'
+      })
+    }else{
+      wx.showToast({
+        title: '开发中,敬请期待...',
+        icon: 'none',
+        duration: 2000
+      })
+    }
   }
 })

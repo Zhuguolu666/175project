@@ -1,12 +1,11 @@
-// pages/insertcustomer/insertcustomer.js
+// pages/mine/mine.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    selectedUrl: '../../assets/images/pub.png',
-    unSelectedUrl: '../../assets/images/pubed.png',
+  
   },
 
   /**
