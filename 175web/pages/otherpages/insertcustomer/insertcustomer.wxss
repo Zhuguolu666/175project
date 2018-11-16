@@ -85,20 +85,7 @@
   float:right;
   margin-top:28rpx;
 }
-.animation-view{
-  background:#fff;
-  z-index:99;
-  position: fixed;
-  width: 100%;
-  bottom: -279px;
-  left: 0;
-}
-.animation-nation{
-  position:absolute;
-  top:0;
-  left:750rpx;
-  width:400rpx;
-  background:#fff;
-  z-index:99;
-
+picker text{
+  margin-top: 25rpx;
+  color: #666;
 }

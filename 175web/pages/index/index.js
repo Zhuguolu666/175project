@@ -1,8 +1,6 @@
-import { testGetApi, testPostApi } from '../../assets/js/api/api.js'
-//index.js
-//获取应用实例
-const app = getApp()
+import { getApi, postApi } from '../../assets/js/api/api.js'
 
+const app = getApp()
 Page({
   data: {
     imgUrls:[

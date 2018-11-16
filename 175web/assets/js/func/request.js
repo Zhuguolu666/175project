@@ -20,17 +20,12 @@ module.exports = {
     })
   },
   postAjax(url, params, success, error) {
-    // let form = new FormData();
-    // Object.keys(params).forEach(v=>{
-    //   form.append(v,params[v])
-    // })
     wx.request({
       url: url,
       method: 'POST',
       data: params,
-      // headers:{},
+      header: { 'content-type':'application/x-www-form-urlencoded'},
       success(res) {
-        console.log(res)
         if (res.data.code == 1) {
           if (success && typeof success == 'function') {
             success(res);

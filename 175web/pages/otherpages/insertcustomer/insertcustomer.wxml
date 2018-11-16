@@ -6,8 +6,8 @@
     </view>
     <view class="insert-form-item-input">
       <view class="form-item-placeholder">
-        <view class="sellorcollect"><image data-item="customer" data-type="0" bindtap='changeCustomer' src="{{ form.customerType == 0 ? selectedUrl : unSelectedUrl }}"></image><text>成人</text></view>
-        <view class="sellorcollect"><image data-item="customer" data-type="1" bindtap='changeCustomer' src="{{ form.customerType == 1 ? selectedUrl : unSelectedUrl }}"></image><text>小孩</text></view>
+        <view class="sellorcollect" data-type="form.customerType" data-value="0" bindtap='changeFormKey'><image src="{{ form.customerType == 0 ? selectedUrl : unSelectedUrl }}"></image><text>成人</text></view>
+        <view class="sellorcollect" data-type="form.customerType" data-value="1" bindtap='changeFormKey'><image src="{{ form.customerType == 1 ? selectedUrl : unSelectedUrl }}"></image><text>小孩</text></view>
       </view>
     </view>
   </view>
@@ -16,7 +16,7 @@
       <text><text class="insert-form-item-must">*</text>姓名：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入客户姓名'></input>
+      <input data-type="form.name" bindinput="changeForm" placeholder='请输入姓名'></input>
     </view>
   </view>
   <view class="insert-form-item" wx:if="{{form.customerType == 1}}">
@@ -24,7 +24,7 @@
       <text>昵称：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入客户昵称'></input>
+      <input data-type="form.nickName" bindinput="changeForm" placeholder='请输入昵称'></input>
     </view>
   </view>
   <view class="insert-form-item">
@@ -32,23 +32,35 @@
       <text><text class="insert-form-item-must">*</text>年龄：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入客户年龄'></input>
+      <input data-type="form.age" bindinput="changeForm" placeholder='请输入年龄'></input>
     </view>
   </view>
   <view class="insert-form-item">
     <view class="insert-form-item-name">
       <text><text class="insert-form-item-must">*</text>生日：</text>
     </view>
-    <view class="insert-form-item-input" data-item="birth" bindtap='selectDate'>
-      <text class="insert-form-text" style="color:{{form.birthday ? '#333' : '#666'}}">{{form.birthday || '请选择客户生日'}}</text><image class="insert-form-arrow" src='../../../assets/images/details.png'></image>   
+    <view class="insert-form-item-input" data-item="birth">
+      <picker bindchange="selectDate" value="{{ birthday }}" mode="date" data-type="form.birthday">
+        <view class="picker">
+          <text style="color:{{ form.birthday ? '#333' : '#666' }}">{{form.birthday || '请选择生日'}}</text>
+          <image class="insert-form-arrow" src='../../../assets/images/details.png'></image>          
+        </view>
+      </picker> 
     </view>
   </view>
   <view class="insert-form-item">
     <view class="insert-form-item-name">
-      <text><text class="insert-form-item-must">*</text>民族：</text>
+      <text>
+        <text class="insert-form-item-must">*</text>民族：
+      </text>
     </view>
-    <view class="insert-form-item-input" bindtap='getNation'>
-      <text class="insert-form-text" style="color:{{form.nation ? '#333' : '#666'}}">{{form.nation || '请选择客户民族'}}</text><image class="insert-form-arrow" src='../../../assets/images/details.png'></image>
+    <view class="insert-form-item-input">
+      <picker bindchange="bindPickerChange" value="{{ nationIndex }}" range="{{nationList}}" range-key="name">
+        <view class="picker">
+          <text style="color:{{ nationIndex ? '#333' : '#666' }}">{{nationList[nationIndex].name || '请选择民族'}}</text>
+          <image class="insert-form-arrow" src='../../../assets/images/details.png'></image>          
+        </view>
+      </picker>
     </view>
   </view>
   <view class="insert-form-item">
@@ -56,7 +68,7 @@
       <text><text class="insert-form-item-must">*</text>联系电话：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入联系电话'></input>
+      <input data-type="form.phoneNumber" bindinput="changeForm" placeholder='请输入联系电话'></input>
     </view>
   </view>
   <view class="insert-form-item">
@@ -64,7 +76,7 @@
       <text>紧急联系人：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入紧急联系人'></input>
+      <input data-type="form.urgencyPerson" placeholder='请输入紧急联系人'></input>
     </view>
   </view>
   <view class="insert-form-item">
@@ -72,7 +84,7 @@
       <text>联系人电话：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入紧急联系方式'></input>
+      <input data-type="form.urgencyNumber" placeholder='请输入紧急联系方式'></input>
     </view>
   </view>
   <view class="insert-form-item">
@@ -80,7 +92,7 @@
       <text>住址：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入客户住址'></input>
+      <input data-type="form.address" placeholder='请输入住址'></input>
     </view>
   </view>
 
@@ -89,7 +101,7 @@
       <text>年级：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入客户年级'></input>
+      <input data-type="form.class" placeholder='请输入年级'></input>
     </view>
   </view>
 
@@ -101,8 +113,8 @@
     </view>
     <view class="insert-form-item-input">
       <view class="form-item-placeholder">
-        <view class="sellorcollect"><image data-item="course" data-type="Y" bindtap='changeCustomer' src="{{ form.applyStatus == 'Y' ? selectedUrl : unSelectedUrl }}"></image><text>是</text></view>
-        <view class="sellorcollect"><image data-item="course" data-type="N" bindtap='changeCustomer' src="{{ form.applyStatus == 'N' ? selectedUrl : unSelectedUrl }}"></image><text>否</text></view>
+        <view class="sellorcollect" bindtap='changeFormKey' data-type="form.applyStatus" data-value="Y"><image src="{{ form.applyStatus == 'Y' ? selectedUrl : unSelectedUrl }}"></image><text>是</text></view>
+        <view class="sellorcollect" bindtap='changeFormKey' data-type="form.applyStatus" data-value="N"><image src="{{ form.applyStatus == 'N' ? selectedUrl : unSelectedUrl }}"></image><text>否</text></view>
       </view>
     </view>
   </view>
@@ -111,8 +123,13 @@
     <view class="insert-form-item-name">
       <text>报名日期：</text>
     </view>
-    <view class="insert-form-item-input" data-item="apply" bindtap='selectDate'>
-      <text class="insert-form-text" style="color:{{form.applyDate ? '#333' : '#666'}}">{{form.applyDate || '请选择报名日期'}}</text><image class="insert-form-arrow" src='../../../assets/images/details.png'></image>
+    <view class="insert-form-item-input" data-type="form.applyDate">
+      <picker bindchange="selectDate" value="{{ applyDate }}" mode="date" data-type="form.applyDate">
+        <view class="picker">
+          <text style="color:{{ form.applyDate ? '#333' : '#666' }}">{{form.applyDate || '请选择报名日期'}}</text>
+          <image class="insert-form-arrow" src='../../../assets/images/details.png'></image>          
+        </view>
+      </picker>
     </view>
   </view>
 
@@ -122,13 +139,18 @@
     </view>
     <view class="insert-form-item-input">
       <view class="form-item-placeholder">
-
-        <view class="sellorcollect"><image data-item="property" data-type="0" bindtap='changeCustomer' src="{{ form.courseProperty == 0 ? selectedUrl : unSelectedUrl }}"></image><text>体验</text></view>
-
-        <view class="sellorcollect"><image data-item="property" data-type="1" bindtap='changeCustomer' src="{{ form.courseProperty == 1 ? selectedUrl : unSelectedUrl }}"></image><text>活动</text></view>
-
-        <view class="sellorcollect"><image data-item="property" data-type="2" bindtap='changeCustomer' src="{{ form.courseProperty == 2 ? selectedUrl : unSelectedUrl }}"></image><text>正课</text></view>
-        
+        <view class="sellorcollect" bindtap='changeFormKey' data-type="form.applyProperty" data-value="0">
+          <image  data-type="0" src="{{ form.applyProperty == 0 ? selectedUrl : unSelectedUrl }}"></image>
+          <text>体验</text>
+        </view>
+        <view class="sellorcollect" bindtap='changeFormKey' data-type="form.applyProperty" data-value="1">
+          <image src="{{ form.applyProperty == 1 ? selectedUrl : unSelectedUrl }}"></image>
+          <text>活动</text>
+        </view>
+        <view class="sellorcollect" bindtap='changeFormKey' data-type="form.applyProperty" data-value="2">
+          <image src="{{ form.applyProperty == 2 ? selectedUrl : unSelectedUrl }}"></image>
+          <text>正课</text>
+        </view>        
       </view>
     </view>
   </view>
@@ -138,7 +160,7 @@
       <text>课程名称：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入课程名称'></input>
+      <input data-type="form.courseName" placeholder='请输入课程名称'></input>
     </view>
   </view>
 
@@ -147,7 +169,7 @@
       <text>课程数量：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入课程数量'></input>
+      <input data-type="form.courseCount" placeholder='请输入课程数量'></input>
     </view>
   </view>
 
@@ -156,7 +178,7 @@
       <text>剩余课数：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入剩余课程数量'></input>
+      <input data-type="form.courseReset" placeholder='请输入剩余课程数量'></input>
     </view>
   </view>
 
@@ -165,7 +187,7 @@
       <text>课程费用：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入课程费用'></input>
+      <input data-type="form.courseFee" placeholder='请输入课程费用'></input>
     </view>
   </view>
 
@@ -174,43 +196,22 @@
       <text>课时长度：</text>
     </view>
     <view class="insert-form-item-input">
-      <input placeholder='请输入课时长度'></input>
+      <input data-type="form.courseTimeLength" placeholder='请输入课时长度'></input>
     </view>
   </view>
 
-  <view class="insert-form-item">
+  <!-- <view class="insert-form-item">
     <view class="insert-form-item-name">
       <text>上课时间：</text>
     </view>
     <view class="insert-form-item-input">
       <input placeholder='请输入上课时间'></input>
     </view>
-  </view>
+  </view> -->
 
-  <view class="insert-form-submit">
+  <view class="insert-form-submit" bindtap='insertCustomer'>
     提交
-  </view>
-  <view animation="{{animationData}}" class="animation-view">
-    <calendar 
-      class="calendar"
-      binddayClick="chooseDate"
-      calendar-style="calendar"  
-      header-style="calendar-header"  
-      board-style="calendar-board" 
-      days-color="{{dayStyle}}" 
-      weeks-type="cn"
-    />
-  </view>
-    
-</view>
-<view class="calendar-bg" style="display:{{showBg?'block':'none'}}" bindtap='closeCalendar'></view>
-<view animation="{{ animationNation }}" class="animation-nation">
-  <nation id="nation"  
-  wx:if="{{ showNation }}" 
-  bind:onCoverShow="_onCoverShow"
-  bind:onCoverHide="_onCoverHide"
-  >
-  </nation>
+  </view>   
 </view>
 
 

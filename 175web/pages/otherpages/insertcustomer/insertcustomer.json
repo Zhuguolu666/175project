@@ -1,9 +1,5 @@
 {
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "客户录入",
-  "usingComponents": {
-    "calendar": "plugin://calendar/calendar",
-    "nation": "/components/nation/nation"
-  }
+  "navigationBarTitleText": "客户录入"
 }
