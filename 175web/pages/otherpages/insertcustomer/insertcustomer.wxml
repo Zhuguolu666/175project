@@ -76,7 +76,7 @@
       <text>紧急联系人：</text>
     </view>
     <view class="insert-form-item-input">
-      <input data-type="form.urgencyPerson" placeholder='请输入紧急联系人'></input>
+      <input data-type="form.urgencyPerson" bindinput="changeForm" placeholder='请输入紧急联系人'></input>
     </view>
   </view>
   <view class="insert-form-item">
@@ -84,7 +84,7 @@
       <text>联系人电话：</text>
     </view>
     <view class="insert-form-item-input">
-      <input data-type="form.urgencyNumber" placeholder='请输入紧急联系方式'></input>
+      <input data-type="form.urgencyNumber" bindinput="changeForm" placeholder='请输入紧急联系方式'></input>
     </view>
   </view>
   <view class="insert-form-item">
@@ -92,7 +92,7 @@
       <text>住址：</text>
     </view>
     <view class="insert-form-item-input">
-      <input data-type="form.address" placeholder='请输入住址'></input>
+      <input data-type="form.address" bindinput="changeForm" placeholder='请输入住址'></input>
     </view>
   </view>
 
@@ -101,7 +101,7 @@
       <text>年级：</text>
     </view>
     <view class="insert-form-item-input">
-      <input data-type="form.class" placeholder='请输入年级'></input>
+      <input data-type="form.class" bindinput="changeForm" placeholder='请输入年级'></input>
     </view>
   </view>
 
@@ -160,7 +160,7 @@
       <text>课程名称：</text>
     </view>
     <view class="insert-form-item-input">
-      <input data-type="form.courseName" placeholder='请输入课程名称'></input>
+      <input data-type="form.courseName" bindinput="changeForm" placeholder='请输入课程名称'></input>
     </view>
   </view>
 
@@ -169,7 +169,7 @@
       <text>课程数量：</text>
     </view>
     <view class="insert-form-item-input">
-      <input data-type="form.courseCount" placeholder='请输入课程数量'></input>
+      <input data-type="form.courseCount" bindinput="changeForm" placeholder='请输入课程数量'></input>
     </view>
   </view>
 
@@ -178,7 +178,7 @@
       <text>剩余课数：</text>
     </view>
     <view class="insert-form-item-input">
-      <input data-type="form.courseReset" placeholder='请输入剩余课程数量'></input>
+      <input data-type="form.courseReset" bindinput="changeForm" placeholder='请输入剩余课程数量'></input>
     </view>
   </view>
 
@@ -187,7 +187,7 @@
       <text>课程费用：</text>
     </view>
     <view class="insert-form-item-input">
-      <input data-type="form.courseFee" placeholder='请输入课程费用'></input>
+      <input data-type="form.courseFee" bindinput="changeForm" placeholder='请输入课程费用'></input>
     </view>
   </view>
 
@@ -196,7 +196,7 @@
       <text>课时长度：</text>
     </view>
     <view class="insert-form-item-input">
-      <input data-type="form.courseTimeLength" placeholder='请输入课时长度'></input>
+      <input data-type="form.courseTimeLength" bindinput="changeForm" placeholder='请输入课时长度'></input>
     </view>
   </view>
 
