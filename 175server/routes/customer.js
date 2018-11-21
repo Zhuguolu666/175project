@@ -24,9 +24,7 @@ let responseJSON = function (res, ret) {
 router.post('/addCustomer',multipartMiddleware ,function(req, res, next){
     // 从连接池获取连接
     pool.getConnection(function(err, connection) {
-        console.log(req)
         let param = req.body || req.params;
-        console.log(param);
         // 建立连接 增加一个用户信息
         connection.query(userSQL.insert, customerService.handleReceiveRequest(param) ,function(err, result) {
             let data;
@@ -39,7 +37,7 @@ router.post('/addCustomer',multipartMiddleware ,function(req, res, next){
             }else{
                 data = {
                     code: -200,
-                    msg:'操作成功',
+                    msg:'操作失败',
                     result:err
                 };
             }
@@ -53,34 +51,34 @@ router.post('/addCustomer',multipartMiddleware ,function(req, res, next){
     });
 });
 // 查询用户
-// router.get('/queryCustomer' ,function(req, res, next){
-//     // 从连接池获取连接
-//     pool.getConnection(function(err, connection) {
-//         let param = req.body || req.params;
-//
-//         // 建立连接 增加一个用户信息
-//         connection.query(userSQL.queryAll ,function(err, result) {
-//             if(result) {
-//                 let result = {
-//                     code: 200,
-//                     msg:'操作成功',
-//                     result:result
-//                 };
-//             }else{
-//                 let result = {
-//                     code: -200,
-//                     msg:'操作成功',
-//                     result:err
-//                 };
-//             }
-//             // 以json形式，把操作结果返回给前台页面
-//             responseJSON(res, result);
-//
-//             // 释放连接
-//             connection.release();
-//
-//         });
-//     });
-// });
+router.get('/queryCustomer' ,function(req, res, next){
+    // 从连接池获取连接
+    pool.getConnection(function(err, connection) {
+        let param = req.body || req.params;
+        // 建立连接 增加一个用户信息
+        connection.query(userSQL.queryAll ,function(err, result) {
+            let data;
+            if(result) {
+                data = {
+                    code: 200,
+                    msg:'操作成功',
+                    result:result
+                };
+            }else{
+                data = {
+                    code: -200,
+                    msg:'操作失败',
+                    result:err
+                };
+            }
+            // 以json形式，把操作结果返回给前台页面
+            responseJSON(res, data);
+
+            // 释放连接
+            connection.release();
+
+        });
+    });
+});
 
 module.exports = router;

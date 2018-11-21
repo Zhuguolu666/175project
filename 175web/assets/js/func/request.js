@@ -26,7 +26,7 @@ module.exports = {
       data: params,
       header: { 'content-type':'application/x-www-form-urlencoded'},
       success(res) {
-        if (res.data.code == 1) {
+        if (res.data.code == 200) {
           if (success && typeof success == 'function') {
             success(res);
           }

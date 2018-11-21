@@ -31,12 +31,12 @@
       <text>关于我们</text>
     </view>
 
-    <view class="index-type-item" data-type="write" bindtap='toInsertPage'>
-      <image data-type="write" src='../../assets/images/write.png'></image>
-      <text data-type="write">信息录入</text>
+    <view class="index-type-item" data-url="../otherpages/insertcustomer/insertcustomer" bindtap='toPage'>
+      <image src='../../assets/images/write.png'></image>
+      <text>信息录入</text>
     </view>
 
-    <view class="index-type-item" bindtap='toInsertPage'>
+    <view class="index-type-item" data-url="../otherpages/customerlist/customerlist" bindtap='toPage'>
       <image src='../../assets/images/list.png'></image>
       <text>客户列表</text>
     </view>

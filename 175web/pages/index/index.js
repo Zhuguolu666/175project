@@ -1,4 +1,4 @@
-import { getApi, postApi } from '../../assets/js/api/api.js'
+// import { getApi, postApi } from '../../assets/js/api/api.js'
 
 const app = getApp()
 Page({
@@ -56,10 +56,10 @@ Page({
       hasUserInfo: true
     })
   },
-  toInsertPage(e){
-    if (e.target.dataset.type === "write"){
+  toPage(e){
+    if (e.currentTarget.dataset.url){
       wx.navigateTo({
-        url: '../otherpages/insertcustomer/insertcustomer'
+        url: e.currentTarget.dataset.url
       })
     }else{
       wx.showToast({

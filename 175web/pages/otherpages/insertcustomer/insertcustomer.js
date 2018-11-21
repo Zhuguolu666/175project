@@ -1,5 +1,5 @@
 const nationList = require('../../../assets/js/data/data.js');
-import { getApi, postApi } from '../../../assets/js/api/api.js'
+import { insertCustomer } from '../../../assets/js/api/api.js'
 Page({
   data: {
     selectedUrl: '../../../assets/images/pub.png',
@@ -63,9 +63,10 @@ Page({
     })
   },
   insertCustomer(){
-    console.log(this.data.form);
-    postApi('http://172.16.1.29:3000/customer/addCustomer', this.data.form, (res) => {
-      console.log(res)
+    insertCustomer('http://172.16.1.29:3000/customer/addCustomer', this.data.form, (res) => {
+      wx.navigateTo({
+        url: '../customerlist/customerlist'
+      })
     })
   }
 })

@@ -1,4 +1,4 @@
-const insertParams = require('../params/customer');
+const insertParams = require('../params/customerParam');
 
 let insertConditions = insertParams.map(v=>{
     return '?'
